@@ -1,0 +1,183 @@
+[
+    {
+        "id": "1062cea8.807b91",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "6729c5ed.b255ac",
+        "type": "ui_form",
+        "z": "1062cea8.807b91",
+        "name": "",
+        "label": "",
+        "group": "aa6a7e4e.bbec8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Enter your query",
+                "value": "name",
+                "type": "text",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "name": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "clear",
+        "topic": "",
+        "x": 90,
+        "y": 420,
+        "wires": [
+            [
+                "c711ebd6.ffe728"
+            ]
+        ]
+    },
+    {
+        "id": "c711ebd6.ffe728",
+        "type": "function",
+        "z": "1062cea8.807b91",
+        "name": "",
+        "func": "msg.payload = msg.payload.name\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 230,
+        "y": 320,
+        "wires": [
+            [
+                "49e1913a.0c6c7",
+                "ee4d16a9.417908"
+            ]
+        ]
+    },
+    {
+        "id": "49e1913a.0c6c7",
+        "type": "watson-conversation-v1",
+        "z": "1062cea8.807b91",
+        "name": "",
+        "workspaceid": "134ec512-045b-4c78-af69-85d88a7a6cd1",
+        "multiuser": false,
+        "context": true,
+        "empty-payload": false,
+        "service-endpoint": "https://api.eu-gb.assistant.watson.cloud.ibm.com/instances/78023d26-4f9f-4b70-8a17-142df2d81b05",
+        "timeout": "",
+        "optout-learning": false,
+        "x": 440,
+        "y": 280,
+        "wires": [
+            [
+                "655f508f.f9db4",
+                "72718af6.734784"
+            ]
+        ]
+    },
+    {
+        "id": "72718af6.734784",
+        "type": "function",
+        "z": "1062cea8.807b91",
+        "name": "",
+        "func": "\n\nmsg.payload = msg.payload.output.text[0];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 630,
+        "y": 320,
+        "wires": [
+            [
+                "43ab8fe6.66489"
+            ]
+        ]
+    },
+    {
+        "id": "655f508f.f9db4",
+        "type": "debug",
+        "z": "1062cea8.807b91",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 650,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "43ab8fe6.66489",
+        "type": "ui_template",
+        "z": "1062cea8.807b91",
+        "group": "dbd5d23b.73acc",
+        "name": "bot",
+        "order": 2,
+        "width": "20",
+        "height": "9",
+        "format": "<div >\n    <label style=\"color:#79e879; font-size:25px;\">Bot:</label>\n    <strong><label ng-bind-html=\"msg.payload\" style=\"color:#000000; font-size:20px;\"></label></strong>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "x": 670,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ee4d16a9.417908",
+        "type": "ui_template",
+        "z": "1062cea8.807b91",
+        "group": "aa6a7e4e.bbec8",
+        "name": "you",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "format": "<div>\n<label style=\"color:#79e879; font-size:25px;\">You:  </label>\n<strong><label ng-bind-html=\"msg.payload\" style=\"color:#000000; font-size:20px;\">  </label></strong>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "x": 410,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "aa6a7e4e.bbec8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Ask me about your product",
+        "tab": "9a3bd2d9.1491d",
+        "order": 1,
+        "disp": true,
+        "width": "20",
+        "collapse": false
+    },
+    {
+        "id": "dbd5d23b.73acc",
+        "type": "ui_group",
+        "z": "",
+        "name": "CHATBOT:",
+        "tab": "9a3bd2d9.1491d",
+        "order": 2,
+        "disp": true,
+        "width": "20",
+        "collapse": false
+    },
+    {
+        "id": "9a3bd2d9.1491d",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Ecobee - Customer Help Desk",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
