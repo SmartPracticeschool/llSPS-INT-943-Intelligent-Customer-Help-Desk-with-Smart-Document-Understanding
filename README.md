@@ -10,7 +10,9 @@ In Watson Discovery I have uploaded ecobee3_UserGuide.pdf document.
 
 Node-Red Dashboard link after deploying : https://customerhelpdesk.eu-gb.mybluemix.net/ui
 
-The flow of node-red will found in flows.json file.
+Youtube video link is : https://youtu.be/RUsmypIFXdA
+
+The flow of node-red will found in helpdesk-master/defaults section as flows.json file.
 
 You can find the discovery manual and cloud function code and assistant skill file above.
 
